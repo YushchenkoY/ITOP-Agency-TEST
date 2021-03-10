@@ -5,15 +5,16 @@ import {startTimer, stopTimer, proceedTimer, pauseTimer, resetTimer} from './red
 function App() {
 
   const dispatch = useDispatch();
-  const correntState = useSelector((state) => state.timer);
+  const correntState = useSelector((state) => state.timer.time),
+        n = useSelector((state) => state.timer.isOn);
 
   return (
     <div className="App">
-      <div> Time: ` ${correntState.time}` </div>
+      <div className="App-timer"> Time: {correntState} </div>
         <div>
-          <button onClick ={() => dispatch(` ${correntState.isOn}` ? stopTimer() : startTimer())}>Start/Stop</button> 
-          <button onClick ={() => dispatch(correntState.isOn ? pauseTimer() : proceedTimer())}>Wait</button>
-          <button onClick={dispatch(resetTimer())}>Reset</button>
+          <button className="App-button" onClick ={() => dispatch(n ? stopTimer() : startTimer())}>{n ? 'STOP' : 'START'}</button> 
+          <button className="App-button" ondblClick ={() => dispatch(n ? pauseTimer() : proceedTimer())}>WAIT</button>
+          <button className="App-button" onClick={dispatch(resetTimer())}>RESET</button>
         </div>
     </div>
   );

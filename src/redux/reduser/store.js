@@ -30,7 +30,8 @@ const timerReduser = (state = initialState, action) => {
             return {
                 ...state,
                 isOn: true,
-                //offset: action.offset
+                
+                offset: action.offset
             };
         case STOP_TIMER:
             return {
@@ -40,7 +41,7 @@ const timerReduser = (state = initialState, action) => {
             return {
                 ...state,
                 isOn: true,
-                //offset: action.offset
+                offset: action.offset
             };
         case PAUSE_TIMER:
             return {
